@@ -89,6 +89,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .btn-corner:hover:not(:disabled) { background: #ae82dd; }
 .btn-freekick { background: #d18a3c; border-color: #d18a3c; color: white; font-weight: 700; }
 .btn-freekick:hover:not(:disabled) { background: #e09e54; }
+.btn-cross { background: #3aa9a0; border-color: #3aa9a0; color: white; font-weight: 700; }
+.btn-cross:hover:not(:disabled) { background: #47c0b6; }
 .btn-big.home { background: var(--home); border-color: var(--home); color: white; }
 .btn-big.away { background: var(--away); border-color: var(--away); color: white; }
 .btn-big.goal { background: #ffd700; border-color: #ffd700; color: #1c1100; font-weight: 800; }
@@ -397,10 +399,17 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     border-radius: 12px;
     padding: 0.5rem;
 }
+.field-stage {
+    position: relative;
+    /* Il tetto di altezza sta qui e non su .field-svg: se lo mettessimo come max-height
+       sull'SVG, su viewport basse il box resterebbe largo 100% con il campo centrato
+       dentro (bande laterali) e le percentuali del popover punterebbero fuori bersaglio. */
+    max-width: calc(70vh * 1050 / 680);
+    margin: 0 auto;
+}
 .field-svg {
     width: 100%;
     height: auto;
-    max-height: 70vh;
     display: block;
     border-radius: 8px;
 }
@@ -765,3 +774,74 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .cal-result { margin-top: 0.6rem; padding: 0.55rem 0.85rem; border-radius: 8px; font-size: 0.85rem; }
 .cal-result.ok { background: rgba(76,175,80,0.14); border: 1px solid var(--accent); }
 .cal-result.warn { background: rgba(240,160,32,0.14); border: 1px solid var(--warn); }
+
+/* --- Popover di recap evento --- */
+.event-popover {
+    position: absolute;
+    z-index: 20;
+    min-width: 210px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+    box-shadow: var(--shadow);
+    font-size: 0.92rem;
+}
+.event-popover-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+}
+.event-popover-head h4 { margin: 0; font-size: 0.98rem; font-weight: 700; }
+.event-popover-head .btn-link { padding: 0 0.2rem; }
+.event-popover .time { color: var(--fg-muted); font-size: 0.84rem; }
+.event-popover .row { margin-top: 0.22rem; }
+.event-popover .outcome { font-weight: 700; color: var(--warn); }
+
+/* --- Report --- */
+.rep-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+.rep-val { width: 3rem; font-size: 1.9rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.rep-val.home { text-align: right; color: var(--home); }
+.rep-val.away { text-align: left; color: var(--away); }
+.rep-mid { flex: 1; min-width: 0; }
+.rep-label {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+}
+.rep-sub { text-transform: none; letter-spacing: 0; opacity: 0.75; margin-left: 0.35rem; }
+.rep-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--bg-elev); }
+.rep-bar-home { background: var(--home); }
+.rep-bar-away { background: var(--away); }
+
+.rep-players { margin-bottom: 1.25rem; }
+.rep-players h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.rep-players h3.home { color: var(--home); }
+.rep-players h3.away { color: var(--away); }
+
+.rep-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.rep-table th {
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.rep-table td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); }
+.rep-table td.num { font-variant-numeric: tabular-nums; }
+.rep-table td.home { color: var(--home); }
+.rep-table td.away { color: var(--away); }
+.rep-table tbody tr:last-child td { border-bottom: none; }
+
+.rep-section { margin: 1.5rem 0 0.6rem; font-size: 0.78rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.rep-tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }

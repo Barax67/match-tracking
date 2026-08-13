@@ -1,8 +1,8 @@
 self.assetsManifest = {
-  "version": "ncQIpqln",
+  "version": "2ufW3y6B",
   "assets": [
     {
-      "hash": "sha256-L3eDQguYXU5j5ag+S6sEnAQV4LkVEP6o1XGhwIpIOAg=",
+      "hash": "sha256-ibHecnX5LipbKm5ucq5C+nqej56GUvm8DCrHvfvMovA=",
       "url": "_content/MatchTracking.Core/css/app.css"
     },
     {
@@ -42,12 +42,12 @@ self.assetsManifest = {
       "url": "_framework/ExcelNumberFormat.zkc9yronjy.wasm"
     },
     {
-      "hash": "sha256-2C+SPg6qI6VJJi/1nfPa7XvvuU2eLCtLdQhOwsOjpbc=",
-      "url": "_framework/MatchTracking.App.g2cnn3vlq3.wasm"
+      "hash": "sha256-hVg3y83nTf23VgCDZWH0h+wwqpH1FsZm9dsMey6wxUU=",
+      "url": "_framework/MatchTracking.App.79jo86pzn6.wasm"
     },
     {
-      "hash": "sha256-XnVDscNS28/m1ooR4deR0el0w7+E+NY6nLR+klT05kk=",
-      "url": "_framework/MatchTracking.Core.2ocq4pwtqk.wasm"
+      "hash": "sha256-IiQFIOYJULt+vbHJ9U2sm51fp2CI+0UE0OL/AKj3TJo=",
+      "url": "_framework/MatchTracking.Core.m7thq3nver.wasm"
     },
     {
       "hash": "sha256-7XGOU621aVLQLNtPM1juHZfjs3wqVP2wIC65V9Ll34Q=",
@@ -314,10 +314,6 @@ self.assetsManifest = {
       "url": "_framework/blazor.webassembly.958z1vx7fr.js"
     },
     {
-      "hash": "sha256-DYYp3LgASlF0snoJTU9ssccPCVUlcfj9NHnEgJYVw1M=",
-      "url": "_framework/dotnet.5a61krd4ka.js"
-    },
-    {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
       "url": "_framework/dotnet.native.nxw7lo0lh5.wasm"
     },
@@ -328,6 +324,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-MZMguyke9CroSQl+L/SHIGFkPTD+LtYGXkXjAvwWx40=",
       "url": "_framework/dotnet.runtime.zbexyp8zrs.js"
+    },
+    {
+      "hash": "sha256-J6lWlj+GZFX2PXdGvjpTnFazcb9OnNRejF3Cy3OXnLA=",
+      "url": "_framework/dotnet.x2jlv9o9ix.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -358,7 +358,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-dCc+lZjz8p91t4ISFuu9gQ5/fIapzt6QXcbjWWFHzH4=",
+      "hash": "sha256-Tn5Aqen9z2WlI+ZPigWEsnzC3u5pHHdse3H7/+PD2Do=",
       "url": "index.html"
     },
     {

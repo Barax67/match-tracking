@@ -867,7 +867,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 
 .app-footer {
     display: flex;
-    align-items: center;
+    /* Sulla linea di base e non al centro: il bottone ha padding e line-height propri,
+       centrare le scatole gli sfalsa l'etichetta rispetto al testo accanto. */
+    align-items: baseline;
     justify-content: center;
     gap: 0.75rem;
     flex-wrap: wrap;
@@ -877,5 +879,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     color: var(--fg-muted);
     font-size: 0.85rem;
 }
+
+/* Il padding orizzontale del bottone si somma al gap: senza, la spaziatura resta uniforme. */
+.app-footer .btn.small { padding-left: 0; padding-right: 0; }
 
 .app-footer-version { font-variant-numeric: tabular-nums; }

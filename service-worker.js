@@ -1,4 +1,4 @@
-/* Manifest version: 0rV2gLJ3 */
+/* Manifest version: ncQIpqln */
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
@@ -6,6 +6,13 @@ self.importScripts('./service-worker-assets.js');
 self.addEventListener('install', event => event.waitUntil(onInstall(event)));
 self.addEventListener('activate', event => event.waitUntil(onActivate(event)));
 self.addEventListener('fetch', event => event.respondWith(onFetch(event)));
+
+// Applica l'aggiornamento su richiesta esplicita dell'utente (bottone "Aggiorna"):
+// senza questo il nuovo worker resta in waiting finche' non si chiudono tutte le schede,
+// e un semplice F5 non basta.
+self.addEventListener('message', event => {
+    if (event.data === 'skipWaiting') self.skipWaiting();
+});
 
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}`;

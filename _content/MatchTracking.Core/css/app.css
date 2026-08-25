@@ -277,7 +277,73 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .roster-add { border-top: 1px dashed var(--border); padding-top: 0.5rem; }
 
 /* --- Match live --- */
-.match-live { display: grid; gap: 0.75rem; }
+/* Senza padding in fondo l'area di lavoro finisce esattamente sul bordo dello schermo
+   quando ci si scorre sopra: con il padding, l'ultimo rem resterebbe irraggiungibile. */
+.app-main:has(.match-live) { padding-bottom: 0; }
+
+/* Colonna flex e non griglia con margini fra fratelli: NumberPad e i modali di esito
+   sono figli diretti di .match-live e position:fixed con inset:0, e un margine fra
+   fratelli ne sposterebbe il bordo superiore. I figli fuori flusso non sono elementi
+   flex, quindi il gap non li tocca. */
+.match-live {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Cio' che deve stare in una schermata e' l'area di LAVORO — striscia, filtri, campo,
+   CTA — non tutta la pagina: l'intestazione sta sopra e puo' scorrere via, e proprio
+   per questo puo' anche andare a capo senza togliere un pixel al campo.
+   100dvh e non 100vh: su mobile 100vh include la barra degli indirizzi che si ritrae.
+   min-height: 0 va ripetuto lungo tutta la catena fino a .field-wrapper — senza, una
+   traccia flex non scende mai sotto l'altezza del proprio contenuto e l'altezza fissa
+   non produce alcun effetto. */
+.live-screen {
+    height: 100dvh;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.live-body {
+    flex: 1;
+    display: flex;
+    gap: 0.75rem;
+    min-height: 0;
+}
+
+/* Larghezza fissa e non fit-content: tarata su "Assist & Tiri", l'etichetta piu'
+   lunga. Se la colonna si adattasse al contenuto, cambiare filtro cambierebbe la
+   larghezza del campo. */
+.live-filters {
+    flex: 0 0 9.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+}
+
+.filter-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.live-main {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Le due barre stanno nella STESSA cella di griglia e ci sono sempre entrambe: cosi'
+   l'altezza della riga e' il massimo delle due per costruzione, e il campo non si
+   muove quando il banner del passo prende il posto delle CTA. Con un min-height
+   tarato a mano il banner resterebbe piu' basso della barra CTA e il campo salterebbe
+   di qualche pixel a ogni inizio e fine azione. */
+.live-bottom { display: grid; }
+.live-bottom > * { grid-area: 1 / 1; align-self: center; width: 100%; }
+.live-bottom > .live-hidden { visibility: hidden; }
 .match-header {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -287,6 +353,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     padding: 0.5rem 0.75rem;
     border-radius: 10px;
 }
+/* Solo la live ha un header che puo' dover andare a capo: .match-header e' condiviso
+   con MatchReview e MatchReport, che restano a griglia. Qui andare a capo non costa
+   nulla, perche' l'intestazione sta fuori dall'area alta 100dvh. */
+.match-live .match-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+.match-live .match-header .scoreboard { flex: 1 1 auto; justify-content: flex-start; }
 .scoreboard {
     display: flex;
     gap: 0.75rem;
@@ -352,24 +427,22 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     flex-wrap: wrap;
 }
 .toolbar-spacer { flex: 1; }
-.sides-indicator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.3rem 0.75rem;
-}
-.sides-indicator .side-label { font-weight: 600; }
-.sides-indicator .side-label.home { color: var(--home); }
-.sides-indicator .side-label.away { color: var(--away); }
-.sides-indicator .arrows { color: var(--fg-muted); font-family: monospace; letter-spacing: -0.1em; }
 
 .side-selector { display: flex; flex-direction: column; gap: 0.4rem; }
 .side-selector .label { color: var(--fg-muted); font-size: 0.9rem; }
 
-.sides-indicator.muted { opacity: 0.45; }
+/* Ogni nome sopra la meta' che quella squadra attacca: li' il significato e'
+   autoevidente e costa ~20px invece della riga con la scatola e le frecce. */
+.sides-strip {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.sides-strip .side-label.home { color: var(--home); }
+.sides-strip .side-label.away { color: var(--away); }
+.sides-strip.muted { opacity: 0.45; }
 .segmented {
     display: inline-flex;
     background: var(--bg-elev);
@@ -392,6 +465,13 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .segmented.sides-view .seg.active.home { background: var(--home); color: white; }
 .segmented.sides-view .seg.active.away { background: var(--away); color: white; }
 
+.segmented.vertical { flex-direction: column; }
+/* I nomi squadra sono testo libero e possono essere piu' larghi della colonna: senza
+   ellissi manderebbero a capo il bottone e la colonna cambierebbe altezza. Il nome
+   intero resta nel title. */
+.segmented.vertical .seg { border-right: none; border-bottom: 1px solid var(--border); text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.segmented.vertical .seg:last-child { border-bottom: none; }
+
 /* --- Field --- */
 .field-wrapper {
     width: 100%;
@@ -399,6 +479,34 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     border-radius: 12px;
     padding: 0.5rem;
 }
+
+/* Solo sulla live il tetto del campo si basa sull'altezza che resta nel contenitore
+   invece che sul viewport: 100cqh e' l'altezza del content box del wrapper, quindi il
+   padding e' gia' scontato. Il dimensionamento resta per LARGHEZZA con altezza
+   derivata, come prima: passare a height:100% sullo stage lo renderebbe piu' largo
+   del campo, l'SVG si centrerebbe lasciando bande laterali e le percentuali del
+   popover punterebbero fuori bersaglio (vedi il commento su .field-stage).
+   Scopate sotto .match-live: MatchReview e AiConfirm usano lo stesso componente e
+   devono tenersi il tetto 70vh. */
+.match-live .field-wrapper { flex: 1; min-height: 0; container-type: size; }
+.match-live .field-stage { max-width: calc(100cqh * 1050 / 680); }
+
+/* Sotto questa larghezza il campo e la colonna dei filtri non convivono: si torna al
+   layout in colonna che scorre. container-type: normal serve perche' container-type:
+   size implica il contenimento delle dimensioni: sul wrapper tornato a flex: 0 0 auto,
+   cioe' dimensionato dal contenuto, lo farebbe collassare ad altezza zero. */
+@media (max-width: 900px) {
+    .app-main:has(.match-live) { padding-bottom: 1rem; }
+    .live-screen { height: auto; }
+    .live-body { flex-direction: column; }
+    .live-filters { flex: 0 0 auto; }
+    .segmented.vertical { flex-direction: row; }
+    .segmented.vertical .seg { border-bottom: none; border-right: 1px solid var(--border); text-align: center; }
+    .segmented.vertical .seg:last-child { border-right: none; }
+    .match-live .field-wrapper { container-type: normal; flex: 0 0 auto; }
+    .match-live .field-stage { max-width: calc(70vh * 1050 / 680); }
+}
+
 .field-stage {
     position: relative;
     /* Il tetto di altezza sta qui e non su .field-svg: se lo mettessimo come max-height

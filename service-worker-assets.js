@@ -1,8 +1,8 @@
 self.assetsManifest = {
-  "version": "n7zTCgjp",
+  "version": "DYju3VLN",
   "assets": [
     {
-      "hash": "sha256-ibHecnX5LipbKm5ucq5C+nqej56GUvm8DCrHvfvMovA=",
+      "hash": "sha256-xG93HqxADgZlw/WzG9hcAzlB8sn6fsXgGGJT3FogdvY=",
       "url": "_content/MatchTracking.Core/css/app.css"
     },
     {
@@ -42,12 +42,12 @@ self.assetsManifest = {
       "url": "_framework/ExcelNumberFormat.zkc9yronjy.wasm"
     },
     {
-      "hash": "sha256-t4IDaC9RgqB2UzRf6SzOE/StrcC5A2qH3NImC7Djx3Q=",
-      "url": "_framework/MatchTracking.App.bf1mis9gtd.wasm"
+      "hash": "sha256-htLkIwOTqjjE41JiUHTijXkITJpsxq2y6w0tKQPjfGs=",
+      "url": "_framework/MatchTracking.App.yeajuxjtik.wasm"
     },
     {
-      "hash": "sha256-RTQbSQxhuISPMMGwyDXxZTW9IZ5URo6PNkDWUUimDz8=",
-      "url": "_framework/MatchTracking.Core.jim33twb6b.wasm"
+      "hash": "sha256-0YooiMW3Vy65rER/wrIlK4MYBMTIRUREG0mY8HMk1Yw=",
+      "url": "_framework/MatchTracking.Core.vw1ekgiyjb.wasm"
     },
     {
       "hash": "sha256-7XGOU621aVLQLNtPM1juHZfjs3wqVP2wIC65V9Ll34Q=",
@@ -314,6 +314,10 @@ self.assetsManifest = {
       "url": "_framework/blazor.webassembly.958z1vx7fr.js"
     },
     {
+      "hash": "sha256-EQWYBLeygvsitenBKtryIu3ojzHcdAig6I6tTdiKcoc=",
+      "url": "_framework/dotnet.9mzzmc6yo5.js"
+    },
+    {
       "hash": "sha256-hYigRhIZKHyCXxXWqL/yR3ZWzZhV2oSi+2N3/UPeoxk=",
       "url": "_framework/dotnet.native.nxw7lo0lh5.wasm"
     },
@@ -324,10 +328,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-MZMguyke9CroSQl+L/SHIGFkPTD+LtYGXkXjAvwWx40=",
       "url": "_framework/dotnet.runtime.zbexyp8zrs.js"
-    },
-    {
-      "hash": "sha256-QQpaU67ucQVDXB7l5HBQn4j9STzxIHWdb//TG8gO4Wc=",
-      "url": "_framework/dotnet.tdl41d5y7f.js"
     },
     {
       "hash": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -358,7 +358,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-k8uoIZEHppIJIhm3ao22EnCnzIaKHuRhn9WUjlafljM=",
+      "hash": "sha256-vYlGizzjyX6ytQWDhAPoog7sB5bq4V/Gu0/+YKc7lyM=",
       "url": "index.html"
     },
     {

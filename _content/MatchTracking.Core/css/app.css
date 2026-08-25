@@ -615,6 +615,18 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     gap: 0.6rem;
 }
 .outcome-grid .goal { grid-column: 1 / -1; }
+.freekick-indirect {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.freekick-indirect input { width: 1.15rem; height: 1.15rem; cursor: pointer; }
 
 /* --- Blazor error overlay (kept minimal) --- */
 #blazor-error-ui {
@@ -928,6 +940,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .rep-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--bg-elev); }
 .rep-bar-home { background: var(--home); }
 .rep-bar-away { background: var(--away); }
+.rep-subrow { display: flex; align-items: center; gap: 0.75rem; margin: -0.5rem 0 0.6rem; }
+.rep-subrow .rep-val { font-size: 1.05rem; font-weight: 700; opacity: 0.7; }
+.rep-subrow .rep-label { font-size: 0.7rem; opacity: 0.8; margin-bottom: 0; }
 
 .rep-players { margin-bottom: 1.25rem; }
 .rep-players h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }

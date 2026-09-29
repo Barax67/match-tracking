@@ -623,7 +623,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     grid-template-columns: 1fr 1fr;
     gap: 0.6rem;
 }
-.outcome-grid .goal { grid-column: 1 / -1; }
+.outcome-grid .goal,
+.outcome-grid .wide { grid-column: 1 / -1; }
 .freekick-indirect {
     display: flex;
     align-items: center;
@@ -636,6 +637,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     font-size: 0.95rem;
 }
 .freekick-indirect input { width: 1.15rem; height: 1.15rem; cursor: pointer; }
+.foot-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+}
+.foot-toggle .label { min-width: 3.5rem; }
+.foot-toggle .segmented .seg { padding: 0.55rem 1.1rem; font-size: 1rem; }
+.outcome-grid .btn.suggested { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* --- Blazor error overlay (kept minimal) --- */
 #blazor-error-ui {

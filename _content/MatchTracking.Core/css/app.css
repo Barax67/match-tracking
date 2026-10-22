@@ -93,6 +93,10 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .btn-cross:hover:not(:disabled) { background: #47c0b6; }
 .btn-gkout { background: #c9556b; border-color: #c9556b; color: white; font-weight: 700; }
 .btn-gkout:hover:not(:disabled) { background: #dd6a80; }
+.btn-penalty { background: #e0c341; border-color: #e0c341; color: #1c1600; font-weight: 700; }
+.btn-penalty:hover:not(:disabled) { background: #ecd35f; }
+.btn-chance { background: #5b6ee0; border-color: #5b6ee0; color: white; font-weight: 700; }
+.btn-chance:hover:not(:disabled) { background: #7080ec; }
 .btn-big.home { background: var(--home); border-color: var(--home); color: white; }
 .btn-big.away { background: var(--away); border-color: var(--away); color: white; }
 .btn-big.goal { background: #ffd700; border-color: #ffd700; color: #1c1100; font-weight: 800; }
@@ -404,6 +408,12 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     justify-content: center;
     padding: 0.5rem 0;
 }
+/* Otto azioni in una riga a 1366px: con le misure di .btn-big andrebbero a capo. */
+@media (min-width: 901px) {
+    .match-live .action-bar { gap: 0.5rem; }
+    .match-live .action-bar .btn-big { min-width: 7rem; padding-left: 1.1rem; padding-right: 1.1rem; }
+    .match-live .live-filters { overflow-y: auto; }
+}
 
 /* --- Stopwatch --- */
 .stopwatch { display: flex; align-items: center; gap: 0.75rem; }
@@ -644,6 +654,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
     margin-bottom: 0.75rem;
 }
 .foot-toggle .label { min-width: 3.5rem; }
+.card-toggle { flex-wrap: wrap; }
 .foot-toggle .segmented .seg { padding: 0.55rem 1.1rem; font-size: 1rem; }
 .outcome-grid .btn.suggested { outline: 2px solid var(--accent); outline-offset: 2px; }
 
